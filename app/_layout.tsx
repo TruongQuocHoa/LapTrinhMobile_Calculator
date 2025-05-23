@@ -1,11 +1,9 @@
-// app/_layout.tsx
-import { Slot } from 'expo-router';
-import { ThemeProvider } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import { useFonts } from 'expo-font';
-import { useColorScheme } from '@/hooks/useColorScheme';
-import { DarkTheme, DefaultTheme } from '@react-navigation/native';
 import { HistoryProvider } from '@/hooks/HistoryContext';
+import { useColorScheme } from '@/hooks/useColorScheme';
+import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
+import { Slot } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();

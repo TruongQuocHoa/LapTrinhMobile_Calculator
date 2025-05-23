@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 const calculatorButtons = [
-  ['AC', '()', '%', '/'],
+  ['AC', '(', ')', '/'],
   ['7', '8', '9', 'X'],
   ['4', '5', '6', '-'],
   ['1', '2', '3', '+'],
@@ -82,17 +82,17 @@ export default function CalculatorSimple() {
                   btn === 'AC'
                     ? styles.acButton
                     : btn === '='
-                    ? styles.equalsButton
-                    : /[()%X/+\-=]/.test(btn)
-                    ? styles.operatorButton
-                    : {},
+                      ? styles.equalsButton
+                      : /[()%X/+\-=]/.test(btn)
+                        ? styles.operatorButton
+                        : {},
                 ]}
                 onPress={() => handleButtonPress(btn)}
               >
                 {btn === '<-' ? (
                   <Ionicons name="backspace-outline" size={24} color="#000" />
                 ) : (
-                  <Text style={styles.buttonText}>{btn}</Text>
+                  <Text style={styles.buttonText}>{btn}</Text>  // ✅ đây là dòng bạn cần đảm bảo có
                 )}
               </TouchableOpacity>
             ))}

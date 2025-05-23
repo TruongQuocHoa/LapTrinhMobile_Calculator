@@ -1,23 +1,27 @@
 import { useHistory } from '@/hooks/HistoryContext';
 import React from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { Button, FlatList, StyleSheet, Text, View } from 'react-native';
 
 const HistoryScreen = () => {
-  const { history } = useHistory();
+  const { history, clearHistory } = useHistory(); // Lấy thêm hàm xóa
 
-const renderItem = ({ item }: { item: any }) => {
-  if (!item || typeof item !== 'object') return null;
+  const renderItem = ({ item }: { item: any }) => {
+    if (!item || typeof item !== 'object') return null;
 
-  return (
-    <View style={styles.item}>
-      <Text style={styles.expression}>{item.expression}</Text>
-      <Text style={styles.result}>= {item.result}</Text>
-    </View>
-  );
-};
+    return (
+      <View style={styles.item}>
+        <Text style={styles.expression}>{item.expression}</Text>
+        <Text style={styles.result}>= {item.result}</Text>
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Lịch sử tính toán</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>Lịch sử tính toán</Text>
+        <Button title="Xóa lịch sử" onPress={clearHistory} color="#d9534f" />
+      </View>
       <FlatList
         data={history.slice().reverse()}
         renderItem={renderItem}
@@ -33,10 +37,16 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#fff',
   },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
+    marginTop: 20,
+  },
   title: {
     fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 12,
   },
   item: {
     marginBottom: 12,

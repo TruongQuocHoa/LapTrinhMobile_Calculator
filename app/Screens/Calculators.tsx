@@ -50,12 +50,13 @@ const units = {
 };
 
 const calculatorButtons = [
-  ['AC', '()', '%', '/'],
+  ['AC', '(', ')', '/'],
   ['7', '8', '9', 'X'],
   ['4', '5', '6', '-'],
   ['1', '2', '3', '+'],
   ['0', ',', '<-', '='],
 ];
+
 const screenWidth = Dimensions.get('window').width;
 const BUTTON_MARGIN = 5;
 const BUTTONS_PER_ROW = 5;
@@ -199,7 +200,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 15,
-    marginTop: 20
+    marginTop: 30,
   },
   title: {
     fontSize: 20,
@@ -239,7 +240,6 @@ const styles = StyleSheet.create({
   buttons: {
     flex: 1,
     justifyContent: 'flex-end',
-    paddingBottom: 20,
   },
 
   row: {

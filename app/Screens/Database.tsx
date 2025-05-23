@@ -70,3 +70,24 @@ export const insertHistory = async (expression, result) => {
     console.log("insertHistory error:", error);
   }
 };
+
+export const clearHistory = async () => {
+  try {
+    const database = await initDB();
+    await database.transaction(tx => {
+      tx.executeSql(
+        'DELETE FROM history;',
+        [],
+        () => {
+          console.log("History cleared");
+        },
+        (tx, error) => {
+          console.log("Error clearing history:", error);
+          return false;
+        }
+      );
+    });
+  } catch (error) {
+    console.log("clearHistory error:", error);
+  }
+};
